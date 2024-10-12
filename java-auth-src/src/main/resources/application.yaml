@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: 'demo'
+  datasource:
+    url: jdbc:mysql://${DB_HOST}:3306/${DB_NAME}?allowPublicKeyRetrieval=true&useSSL=false
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  flyway: 
+    enabled: true
+jwt:
+  access:
+    key: MY_SECRET_KEY!
+    expiration: 30000
+  refresh:
+    expiration: 30000
+    length: 24

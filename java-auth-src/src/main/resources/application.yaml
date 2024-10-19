@@ -10,8 +10,21 @@ spring:
     enabled: true
 jwt:
   access:
+    issuer: ME
     key: MY_SECRET_KEY!
-    expiration: 30000
+    expiration: 300
   refresh:
-    expiration: 30000
+    expiration: 300
     length: 24
+server:
+ port: 8081
+ ssl:
+   key-store: classpath:keystore.p12
+   key-store-password: test
+   key-store-type: PKCS12
+   key-alias: myalias
+logging:
+  level:
+    org.springframework.web: "trace"
+    org.springframework.security: "trace"
+    org.hibernate: "debug"

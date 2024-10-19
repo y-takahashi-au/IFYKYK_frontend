@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import java.sql.Timestamp;
+import java.time.Instant;
 import com.example.demo.enums.AccountStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,7 +13,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-@Table(name = "user")
+@Table(name = "account")
 @Entity
 @Getter
 @Setter
@@ -23,12 +24,12 @@ public class Account {
     private String id;
 
     @Column(name = "status", nullable = false)
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private AccountStatus status;
 
     @Column(name = "created_at")
-    private Timestamp createdAt;
+    private Timestamp createdAt = Timestamp.from(Instant.now());
 
     @Column(name = "updated_at")
-    private Timestamp updatedAt;
+    private Timestamp updatedAt = Timestamp.from(Instant.now());
 }

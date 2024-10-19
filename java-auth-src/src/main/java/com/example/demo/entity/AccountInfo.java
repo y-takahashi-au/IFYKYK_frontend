@@ -1,15 +1,18 @@
 package com.example.demo.entity;
 
 import java.time.Instant;
+import com.example.demo.enums.AccountRoll;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Table(name = "user")
+@Table(name = "account_info")
 @Entity
 @Getter
 @Setter
@@ -19,8 +22,9 @@ public class AccountInfo {
     @Column(name = "account_id", length = 26, nullable = false)
     private String accountId;
 
-    @Column(name = "roll", length = 15, nullable = false)
-    private String roll;
+    @Column(name = "roll", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private AccountRoll roll;
 
     @Column(name = "given_name", length = 50, nullable = false)
     private String givenName;

@@ -1,5 +1,6 @@
 services:
   vue-frontend:
+    container_name: vue-frontend
     image: mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm
     volumes:
       # Mount the root folder that contains .git
@@ -11,6 +12,7 @@ services:
       - lalingua
 
   java-auth:
+    container_name: java-auth
     build: .
     volumes:
       # Mount the root folder that contains .git
@@ -22,7 +24,8 @@ services:
       DB_USERNAME: root
       DB_PASSWORD: root
     ports:
-      - "8081:8080"
+      - "8080:8080"
+      - "8081:8081"
     networks:
       - lalingua
 
@@ -39,6 +42,12 @@ services:
       MYSQL_USER: lalingua
       MYSQL_PASSWORD: lalingua
       MYSQL_DATABASE: auth
+    networks:
+      - lalingua
+  curl:
+    container_name: curl
+    command: sleep infinity
+    image: ubuntu:latest
     networks:
       - lalingua
 
